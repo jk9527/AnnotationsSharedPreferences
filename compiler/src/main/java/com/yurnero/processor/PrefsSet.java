@@ -84,7 +84,7 @@ public class PrefsSet {
         MethodSpec getMethd = MethodSpec.methodBuilder("get")//
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)//
                 .returns(ClassName.get(packageName, javafileName))//
-                .addCode("if (sInstance == null) { \n" + "      return sInstance; \n" + "} " + "else { \n")
+                .addCode("if (sInstance != null) { \n" + "      return sInstance; \n" + "} " + "else { \n")
                 .addStatement("     throw new $T($S)", RUNTIME_EXCEPTION, "the instance has not initialized")//
                 .addCode("} \n")//
                 .build();
